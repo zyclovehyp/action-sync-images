@@ -36,17 +36,17 @@ jobs:
         run: |
           # 定义镜像列表
           DIFY_IMAGES=(
-            "langgenius/dify-api:1.0.0"
-            "langgenius/dify-web:1.0.0"
+            "langgenius/dify-api"
+            "langgenius/dify-web"
             "postgres:15-alpine"
             "redis:6-alpine"
-            "langgenius/dify-sandbox:0.2.10"
-            "langgenius/dify-plugin-daemon:0.0.1-local"
+            "langgenius/dify-sandbox"
+            "langgenius/dify-plugin-daemon"
             "ubuntu/squid:latest"
             "certbot/certbot"
             "nginx:latest"
             "semitechnologies/weaviate:1.19.0"
-            "langgenius/qdrant:v1.7.3"
+            "langgenius/qdrant"
             "pgvector/pgvector:pg16"
             "tensorchord/pgvecto-rs:pg16-v0.3.0"
             "ghcr.io/chroma-core/chroma:0.5.20"
