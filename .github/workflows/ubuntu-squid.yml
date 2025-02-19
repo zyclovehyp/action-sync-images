@@ -1,4 +1,4 @@
-name: Sync ubuntu-squid Docker Images to Alibaba Cloud
+name: ubuntu/squid:latest
 
 on:
   # 定时任务，每天凌晨 2 点执行

@@ -1,4 +1,4 @@
-name: Sync Docker Images to Alibaba Cloud
+name: semitechnologies/weaviate:1.19.0
 
 on:
   # 定时任务，每天凌晨 2 点执行

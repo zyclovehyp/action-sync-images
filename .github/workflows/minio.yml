@@ -1,4 +1,4 @@
-name: Sync minio Docker Images to Alibaba Cloud
+name: minio/minio:RELEASE.2023-03-20T20-16-18Z
 
 on:
   # 定时任务，每天凌晨 2 点执行

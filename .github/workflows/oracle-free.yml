@@ -1,4 +1,4 @@
-name: Sync oracle free Docker Images to Alibaba Cloud
+name: container-registry.oracle.com/database/free:latest
 
 on:
   # 定时任务，每天凌晨 2 点执行

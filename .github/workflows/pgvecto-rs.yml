@@ -1,4 +1,4 @@
-name: Sync pgvecto-rs Docker Images to Alibaba Cloud
+name: tensorchord/pgvecto-rs:pg16-v0.3.0
 
 on:
   # 定时任务，每天凌晨 2 点执行

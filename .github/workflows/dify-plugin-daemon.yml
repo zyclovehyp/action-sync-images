@@ -1,4 +1,4 @@
-name: Sync dify-plugin-daemon Docker Images to Alibaba Cloud
+name: langgenius/dify-plugin-daemon:0.0.1-local
 
 on:
   # 定时任务，每天凌晨 2 点执行

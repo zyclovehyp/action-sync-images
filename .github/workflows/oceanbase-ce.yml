@@ -1,4 +1,4 @@
-name: Sync oceanbase-ce Docker Images to Alibaba Cloud
+name: quay.io/oceanbase/oceanbase-ce:4.3.3.0-100000142024101215
 
 on:
   # 定时任务，每天凌晨 2 点执行

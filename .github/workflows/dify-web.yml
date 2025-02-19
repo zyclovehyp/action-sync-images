@@ -1,4 +1,4 @@
-name: Sync dify-web Docker Images to Alibaba Cloud
+name: langgenius/dify-web
 
 on:
   # 定时任务，每天凌晨 2 点执行

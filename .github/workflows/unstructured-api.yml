@@ -1,4 +1,4 @@
-name: Sync unstructured-api Docker Images to Alibaba Cloud
+name: downloads.unstructured.io/unstructured-io/unstructured-api:latest
 
 on:
   # 定时任务，每天凌晨 2 点执行

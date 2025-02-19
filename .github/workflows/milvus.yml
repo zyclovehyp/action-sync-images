@@ -1,4 +1,4 @@
-name: Sync milvus Docker Images to Alibaba Cloud
+name: milvusdb/milvus:v2.5.0-beta
 
 on:
   # 定时任务，每天凌晨 2 点执行
