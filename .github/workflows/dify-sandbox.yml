@@ -36,7 +36,7 @@ jobs:
         run: |
           # 定义镜像列表
           DIFY_IMAGES=(
-            "langgenius/dify-sandbox"
+            "langgenius/dify-sandbox:latest"
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
