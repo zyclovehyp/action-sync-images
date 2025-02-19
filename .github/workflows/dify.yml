@@ -1,9 +1,11 @@
-name: Sync Dify Docker Images to Alibaba Cloud
+name: Sync Docker Images to Alibaba Cloud
 
 on:
+  # 定时任务，每天凌晨 2 点执行
   schedule:
-    - cron: '0 0 * * *'  # 每天凌晨执行一次同步任务
-  workflow_dispatch:  # 允许手动触发工作流
+    - cron: '0 2 * * *'
+  # 允许手动触发工作流
+  workflow_dispatch:
 
 jobs:
   sync-images:
@@ -19,8 +21,9 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}  # 如果需要认证，添加 Docker Hub 用户名
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}  # 如果需要认证，添加 Docker Hub 密码
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Login to Alibaba Cloud Container Registry
         uses: docker/login-action@v2
@@ -29,9 +32,9 @@ jobs:
           username: ${{ secrets.ALIYUN_REGISTRY_USERNAME }}
           password: ${{ secrets.ALIYUN_REGISTRY_PASSWORD }}
 
-      - name: List and sync Dify images
+      - name: Sync images
         run: |
-          # 定义 Dify 镜像列表
+          # 定义镜像列表
           DIFY_IMAGES=(
             "langgenius/dify-api:1.0.0"
             "langgenius/dify-web:1.0.0"
@@ -58,22 +61,16 @@ jobs:
             "docker.elastic.co/elasticsearch/elasticsearch:8.14.3"
             "docker.elastic.co/kibana/kibana:8.14.3"
             "downloads.unstructured.io/unstructured-io/unstructured-api:latest"
-            # 可以添加更多 Dify 相关镜像
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
-            # 获取镜像的所有标签
-            TAGS=$(curl -s "https://registry.hub.docker.com/v2/repositories/${IMAGE}/tags?page_size=100" | jq -r '.results[].name')
+            # 拉取镜像
+            docker pull "$IMAGE"
 
-            for TAG in $TAGS; do
-              # 拉取 Docker Hub 上的镜像
-              docker pull "${IMAGE}:${TAG}"
+            # 为镜像添加阿里云镜像仓库的标签
+            ALIYUN_IMAGE="${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAMESPACE }}/${IMAGE##*/}"
+            docker tag "$IMAGE" "$ALIYUN_IMAGE"
 
-              # 为镜像添加阿里云镜像仓库的标签
-              ALIYUN_IMAGE="${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAMESPACE }}/${IMAGE##*/}:${TAG}"
-              docker tag "${IMAGE}:${TAG}" "${ALIYUN_IMAGE}"
-
-              # 推送镜像到阿里云镜像仓库
-              docker push "${ALIYUN_IMAGE}"
-            done
+            # 推送镜像到阿里云镜像仓库
+            docker push "$ALIYUN_IMAGE"
           done
