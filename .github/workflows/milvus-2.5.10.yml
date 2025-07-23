@@ -1,5 +1,4 @@
-name: milvusdb/milvus:v2.5.0-beta
-
+name: milvusdb/milvus:v2.5.10
 on:
   # 定时任务，每天凌晨 2 点执行
   schedule:
@@ -36,7 +35,7 @@ jobs:
         run: |
           # 定义镜像列表
           DIFY_IMAGES=(
-            "milvusdb/milvus:v2.5.0-beta"
+            "milvusdb/milvus:v2.5.10"
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
