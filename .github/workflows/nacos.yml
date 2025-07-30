@@ -1,4 +1,4 @@
-name: nacos/nacos-server:v2.2.1
+name: nacos/nacos-server:v2.4.2
 
 on:
   # 定时任务，每天凌晨 2 点执行
@@ -37,7 +37,7 @@ jobs:
           # 定义镜像列表
           DIFY_IMAGES=(
 
-            "nacos/nacos-server:v2.2.1"
+            "nacos/nacos-server:v2.4.2"
            
           )
 
