@@ -38,6 +38,7 @@ jobs:
           DIFY_IMAGES=(
             "prom/prometheus:latest"
             "grafana/grafana:latest"
+            "grafana/grafana-enterprise"
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
