@@ -36,9 +36,9 @@ jobs:
         run: |
           # 定义镜像列表
           DIFY_IMAGES=(
-            "powerjob/powerjob-mysql:latest"
-            "powerjob/powerjob-worker-samples:latest"
-            "powerjob/powerjob-server:latest"
+            "powerjob/powerjob-mysql:4.0.1"
+            "powerjob/powerjob-worker-samples:4.0.1"
+            "powerjob/powerjob-server:4.0.1"
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
