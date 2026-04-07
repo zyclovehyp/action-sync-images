@@ -44,7 +44,8 @@ jobs:
             docker pull "$IMAGE"
 
             # 为镜像添加阿里云镜像仓库的标签
-            ALIYUN_IMAGE="${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAMESPACE }}/${IMAGE##*/}"
+            # ALIYUN_IMAGE="${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAMESPACE }}/${IMAGE##*/}"
+            ALIYUN_IMAGE="${{ secrets.ALIYUN_REGISTRY }}/${{ secrets.ALIYUN_NAMESPACE }}/node:v1.35.1"
             docker tag "$IMAGE" "$ALIYUN_IMAGE"
 
             # 推送镜像到阿里云镜像仓库
