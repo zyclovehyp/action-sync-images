@@ -36,7 +36,7 @@ jobs:
         run: |
           # 定义镜像列表
           DIFY_IMAGES=(
-            "kindest/node:v1.35.0"
+            "kindest/node:v1.35.0@sha256:cf1d8a817f85226f8b256fca15fb0eebcb82ebc8598f496b9f9290f6cffb4688"
           )
 
           for IMAGE in "${DIFY_IMAGES[@]}"; do
